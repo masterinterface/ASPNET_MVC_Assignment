@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CA1.Models.Person>
+
+
+@{
+    ViewBag.Title = "DisplayContacts";
+}
+
+<h2>DisplayContacts</h2>
+<table border="1" cellpadding="10" cellspacing="10">
+    <tr>
+        <th><!--Will output the names assined within the Person model -->
+            @Html.DisplayNameFor(m => m.lName)
+        </th>
+        <th><!--Will output the names assined within the Person model -->
+            @Html.DisplayNameFor(m => m.fName)
+        </th>
+        <th>
+            Phone Number
+        </th>
+    </tr>
+    <!--Use a loop to output each contacts' info to a table row -->
+    @foreach (var item in @Model)
+    {   int index = 0; index++;
+        <tr>
+            <td><!--Will output string values fName, and lName -->
+                @Html.DisplayFor(m => item.fName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.lName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.destArea)@Html.DisplayFor(m => item.destNum)
+            </td>
+            <td><!--ActionLink to send 2 string parameters back to the 'ToContact' ActionResult-->
+                @Html.ActionLink("Send Message", "Tocontact", "Contacts", new { destArea = item.destArea, destNum = item.destNum }, null)
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

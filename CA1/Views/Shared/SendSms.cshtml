@@ -1,0 +1,57 @@
+﻿@model CA1.Models.Sms
+
+@{
+    ViewBag.Title = "Send an SMS";
+}
+
+<h2>Send an SMS</h2>
+<!--tells the form where to send the user inputs and the HTML attributes
+    I could not use Html.BeginForm(action, method) as this caused the form to post back
+    to the wrong controller (in cases where model passed from the Contacts controller)-->
+<form action="/Message/SendSms" method="post">
+    <!--used to You can specify error messages against the model
+        The bool property indicates we would like to display the validation summary error messages 
+        at the same time as displaying the property error messages-->
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <!--styling for the textbox-->
+        <div class="editor-label">
+            <!--this looks in the model to find the label for the 'smsText' property-->
+            @Html.LabelFor(model => model.smsText)
+        </div>
+        <div class="editor-field">
+            <!--here we use the larger TextAreaFor textbox (for user input) as the SMS is can be up to 140characters-->
+            @Html.TextAreaFor(model => model.smsText)
+            <!--this is the client-side validation bound to the model-->
+            @Html.ValidationMessageFor(model => model.smsText)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.destArea)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.destArea)
+            @Html.ValidationMessageFor(model => model.destArea)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.destNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.destNum)
+            @Html.ValidationMessageFor(model => model.destNum)
+        </div>
+        <p>
+            <!--this button goes to send off the form-->
+            <input type="submit" value="Send Message" />
+        </p>
+    </fieldset>
+</form>
+
+<!--this is important as it renders the jquery files necessary for client side (front end) validation-->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Succes";
+    
+}
+
+<h2>Succes</h2>
+
+<p>
+    @ViewBag.Message
+
+    <br />
+    The message you sent is:
+    @ViewBag.SmsMessage
+</p>
+@Html.ActionLink("Send new message", "SendSms")

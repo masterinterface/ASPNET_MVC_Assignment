@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "About Yan's MVC web-app (CA1)";
+}
+
+<article>
+    <p>
+        DIT Dublin Institute of Technology - 2014 - EAD
+        <br />
+        CA1 | Yan Charbonnier
+    </p>
+
+    <p>
+        Build an ASP.Net MVC application which allows a user to send a SMS text message.
+        <ul>
+            <li>When the user visits your site, they should be presented with a ‘Send Text’ page that allows them to enter a phone number and a message and then send that message.</li>
+            <li>Once they send that message they should be redirected to ‘confirm’ page confirming the message was sent. 
+                <ul>
+                    <li>The system should be able to match the phone number against a list of recipient contacts and display the name of the recipient</li>
+                    <li>If the number does not match any existing contact the user should be directed to an ‘error’ page</li>
+                </ul>
+            </li>
+            <li>The application should also include a ‘contacts’ page that
+                <ul>
+                    <li>Displays a list of contact names and phone numbers</li>
+                    <li>For each person contact listed there should be a ’send text’ button to allow the user to send a text to that person</li>
+                </ul>
+            </li>
+        </ul>
+
+    <p>
+        Your application should include (but not restricted to) the following:
+        <ul>
+            <li>A model class, representing the SMS text message, containing the following :
+                <ul>
+                    <li>a 3 digit destination mobile phone number area code (e.g  087)</li>
+                    <li>a 7 digit destination mobile phone number</li>
+                    <li>a 7 digit destination mobile phone number</li>
+                    <li>text content of no more than 140 characters long (and containing at least 1 character)</li>
+                </ul>
+            </li>
+            <li>A model class(es), representing a list of possible recipients’ contacts. 
+                <ul>
+                    <li>A contact should contain the following information:
+                        <ul>
+                            <li>Forename</li>
+                            <li>Surname</li>
+                            <li>a 3 digit destination mobile phone number area code (e.g  087)</li>
+                            <li>a 7 digit destination mobile phone number</li>
+                        </ul>
+                    </li>
+                    <li>In a real life scenario this list would be held in a database. For this application, hardwire 10 contacts into the code. For example you could :
+                        <ul>
+                            <li>create 10 contacts in the class constructor</li>
+                            <li>or provide a get method or property that returns 10 contacts</li>
+                            <li>or provide a mock database access class that returns 10 contracts</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>a new controller which 
+                <ul>
+                    <li>Displays a new “Send Sms” view.</li>
+                    <li>The new view should show a blank text message when the application is run. </li>
+                    <li>The user should be able to compose the text message and send it. </li>
+                    <li>When sent just re-direct to a page confirming that the message has been sent. This page should display the message itself and the name of the person that the message was sent to (remember we are not sending an actual SMS message here so a confirmation message that it was sent is sufficient).</li>
+                    <li>If the number entered does not match any of the contacts then re-direct to an error page indicating that no person contact was found for the number entered.</li>
+                    <li>On both the confirmation and error page, let the user follow a link back to send another SMS from the confirmation page. </li>
+                </ul>
+            </li>
+            <li>a new controller which 
+                <ul>
+                    <li>Displays a list of the current person contacts.</li>
+                    <li>Beside each person in the list, the user should be able to click a ‘Send Text’ button. This button will bring the user to the existing ‘Send Text’ page where the selected persons phone number will be filled in.</li>
+                </ul>
+            </li>
+            <li>Add logging to you application that logs all messages sent (use a static class for the logging functionality). For this application it is sufficient to log to the debug console in visual studio (use System.Diagnostics.Debug.WriteLine() )
+            </li>
+            <li>Ensure all inputs are validated (as defned above e.g. area code must be 3 digits long)</li>
+        </ul>
+    </p>
+
+</article>
+
+
